@@ -11,7 +11,8 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static specs.UsersSpec.*;
+import static specs.RequestSpecs.defaultRequestSpec;
+import static specs.ResponsesSpecs.*;
 
 @Tag("users_tests")
 @Owner("dmitry_endo")
@@ -26,14 +27,14 @@ public class UsersTests extends TestBase {
         userData.setJob("refugee");
 
         UserResponseModel response = step("Make request", () ->
-                given(usersRequestSpec)
+                given(defaultRequestSpec)
                         .body(userData)
 
                 .when()
                         .post(USERS_PATH)
 
                 .then()
-                        .spec(usersResponseSpec201)
+                        .spec(responseSpec201)
                         .extract().as(UserResponseModel.class));
 
         step("Check response", () -> {
@@ -54,7 +55,7 @@ public class UsersTests extends TestBase {
         userData.setJob("manager");
 
         UserResponseModel response = step("Make request", () ->
-                given(usersRequestSpec)
+                given(defaultRequestSpec)
                         .pathParam("id", "2")
                         .body(userData)
 
@@ -62,7 +63,7 @@ public class UsersTests extends TestBase {
                         .put(USER_BY_ID_PATH)
 
                 .then()
-                        .spec(usersResponseSpec200)
+                        .spec(responseSpec200)
                         .extract().as(UserResponseModel.class));
 
         step("Check response", () -> {
@@ -80,7 +81,7 @@ public class UsersTests extends TestBase {
         userData.setJob("driver");
 
         UserResponseModel response = step("Make request", () ->
-                given(usersRequestSpec)
+                given(defaultRequestSpec)
                         .pathParam("id", "3")
                         .body(userData)
 
@@ -88,7 +89,7 @@ public class UsersTests extends TestBase {
                         .patch(USER_BY_ID_PATH)
 
                 .then()
-                        .spec(usersResponseSpec200)
+                        .spec(responseSpec200)
                         .extract().as(UserResponseModel.class));
 
         step("Check response", () -> {
@@ -102,26 +103,26 @@ public class UsersTests extends TestBase {
     @DisplayName("Check deleting user")
     void deleteUserTest() {
         step("Make request", () ->
-                given(usersRequestSpec)
+                given(defaultRequestSpec)
                         .pathParam("id", "2")
 
                 .when()
                         .delete(USER_BY_ID_PATH)
 
                 .then()
-                        .spec(usersResponseSpec204));
+                        .spec(responseSpec204));
     }
 
     @Test
     @DisplayName("Check data field array size in users list")
     void checkUsersDataSizeTest() {
         UsersResponseModel response = step("Make request", () ->
-                given(usersRequestSpec)
+                given(defaultRequestSpec)
                         .queryParam("page", "2")
                         .get(USERS_PATH)
 
                 .then()
-                        .spec(usersResponseSpec200)
+                        .spec(responseSpec200)
                         .extract().as(UsersResponseModel.class));
 
         step("Check response", () ->
@@ -135,12 +136,12 @@ public class UsersTests extends TestBase {
         String supportText = "Tired of writing endless social media content? Let Content Caddy generate it for you.";
 
         UsersResponseModel response = step("Make request", () ->
-                given(usersRequestSpec)
+                given(defaultRequestSpec)
                         .queryParam("page", "2")
                         .get(USERS_PATH)
 
                 .then()
-                        .spec(usersResponseSpec200)
+                        .spec(responseSpec200)
                         .extract().as(UsersResponseModel.class));
 
         step("Check response", () -> {

@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static specs.AuthSpec.*;
+import static specs.RequestSpecs.defaultRequestSpec;
+import static specs.ResponsesSpecs.*;
 
 @Tag("registration_tests")
 @Owner("dmitry_endo")
@@ -25,14 +26,14 @@ public class RegistrationTests extends TestBase {
         authData.setPassword("pistol");
 
         AuthResponseModel response = step("Make request", () ->
-                given(authRequestSpec)
+                given(defaultRequestSpec)
                     .body(authData)
 
                 .when()
                     .post(REGISTER_PATH)
 
                 .then()
-                    .spec(authResponseSpec200)
+                    .spec(responseSpec200)
                     .extract().as(AuthResponseModel.class));
 
         step("Check response", () -> {
@@ -49,14 +50,14 @@ public class RegistrationTests extends TestBase {
         authData.setEmail("eve.holt@reqres.in");
 
         AuthResponseModel response = step("Make request", () ->
-                given(authRequestSpec)
+                given(defaultRequestSpec)
                     .body(authData)
 
                 .when()
                     .post(REGISTER_PATH)
 
                 .then()
-                    .spec(authResponseSpec400)
+                    .spec(responseSpec400)
                     .extract().as(AuthResponseModel.class));
 
         step("Check response", () -> {
@@ -71,14 +72,14 @@ public class RegistrationTests extends TestBase {
         authData.setPassword("pistol");
 
         AuthResponseModel response = step("Make request", () ->
-                given(authRequestSpec)
+                given(defaultRequestSpec)
                     .body(authData)
 
                 .when()
                     .post(REGISTER_PATH)
 
                 .then()
-                    .spec(authResponseSpec400)
+                    .spec(responseSpec400)
                     .extract().as(AuthResponseModel.class));
 
         step("Check response", () -> {

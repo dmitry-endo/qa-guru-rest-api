@@ -1,7 +1,6 @@
 package api_tests;
 
 import io.qameta.allure.Owner;
-import io.qameta.allure.Severity;
 import models.AuthRequestModel;
 import models.AuthResponseModel;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +10,8 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static specs.AuthSpec.*;
+import static specs.RequestSpecs.defaultRequestSpec;
+import static specs.ResponsesSpecs.*;
 
 @Tag("login_tests")
 @Owner("dmitry_endo")
@@ -26,14 +26,14 @@ public class LoginTests extends TestBase {
         authData.setPassword("cityslicka");
 
         AuthResponseModel response = step("Make request", () ->
-                given(authRequestSpec)
+                given(defaultRequestSpec)
                         .body(authData)
 
                         .when()
                         .post(LOGIN_PATH)
 
                         .then()
-                        .spec(authResponseSpec200)
+                        .spec(responseSpec200)
                         .extract().as(AuthResponseModel.class));
 
         step("Check response", () -> {
@@ -48,14 +48,14 @@ public class LoginTests extends TestBase {
         authData.setEmail("eve.holt@reqres.in");
 
         AuthResponseModel response = step("Make request", () ->
-                given(authRequestSpec)
+                given(defaultRequestSpec)
                         .body(authData)
 
                         .when()
                         .post(REGISTER_PATH)
 
                         .then()
-                        .spec(authResponseSpec400)
+                        .spec(responseSpec400)
                         .extract().as(AuthResponseModel.class));
 
         step("Check response", () -> {
@@ -70,14 +70,14 @@ public class LoginTests extends TestBase {
         authData.setPassword("pistol");
 
         AuthResponseModel response = step("Make request", () ->
-                given(authRequestSpec)
+                given(defaultRequestSpec)
                         .body(authData)
 
                         .when()
                         .post(REGISTER_PATH)
 
                         .then()
-                        .spec(authResponseSpec400)
+                        .spec(responseSpec400)
                         .extract().as(AuthResponseModel.class));
 
         step("Check response", () -> {
