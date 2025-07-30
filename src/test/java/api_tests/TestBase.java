@@ -8,6 +8,8 @@ public class TestBase {
 
     protected static final String REGISTER_PATH = "/register";
     protected static final String LOGIN_PATH = "/login";
+    protected static final String USERS_PATH = "/users";
+    protected static final String USER_BY_ID_PATH = "/users/{id}";
 
     @BeforeAll
     static void setUp() {

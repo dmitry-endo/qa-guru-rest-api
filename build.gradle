@@ -58,3 +58,9 @@ task login_tests(type: Test) {
         includeTags("login_tests")
     }
 }
+
+task users_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags("users_tests")
+    }
+}
