@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
-import static specs.RequestSpecs.defaultRequestSpec;
-import static specs.ResponsesSpecs.*;
+import static specs.DefaultSpecs.*;
 
 @Tag("login_tests")
 @Owner("dmitry_endo")
