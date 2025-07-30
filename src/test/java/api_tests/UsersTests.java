@@ -16,7 +16,7 @@ import static specs.UsersSpec.*;
 @Tag("users_tests")
 @Owner("dmitry_endo")
 @DisplayName("Test for API users interactions")
-public class UsersListTests extends TestBase {
+public class UsersTests extends TestBase {
 
     @Test
     @DisplayName("Check creating user")
