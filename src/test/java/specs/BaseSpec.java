@@ -1,6 +1,6 @@
 package specs;
 
-import api_tests.TestBase;
+import reqres_api_tests.TestBase;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.ResponseSpecification;
 

@@ -1,4 +1,4 @@
-package api_tests;
+package reqres_api_tests;
 
 import io.qameta.allure.Owner;
 import models.AuthRequestModel;
