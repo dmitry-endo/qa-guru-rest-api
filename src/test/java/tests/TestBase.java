@@ -22,22 +22,22 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         Configuration.timeout = 5000;
-//        Configuration.browser = System.getProperty("browserName", "chrome");
-//        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
-//        Configuration.browserSize = System.getProperty("screenResolution", "1920x1080");
-//        Configuration.remote = String.format(
-//                "https://%s:%s@%s/wd/hub",
-//                System.getProperty("selenoidLogin", "user1"),
-//                System.getProperty("selenoidPassword", "1234"),
-//                System.getProperty("selenoidRemoteHost", "selenoid.autotests.cloud")
-//        );
-//
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
-//                "enableVNC", true,
-//                "enableVideo", true
-//        ));
-//        Configuration.browserCapabilities = capabilities;
+        Configuration.browser = System.getProperty("browserName", "chrome");
+        Configuration.browserVersion = System.getProperty("browserVersion", "127.0");
+        Configuration.browserSize = System.getProperty("screenResolution", "1920x1080");
+        Configuration.remote = String.format(
+                "https://%s:%s@%s/wd/hub",
+                System.getProperty("selenoidLogin", "user1"),
+                System.getProperty("selenoidPassword", "1234"),
+                System.getProperty("selenoidRemoteHost", "selenoid.autotests.cloud")
+        );
+
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("selenoid:options", Map.<String, Object>of(
+                "enableVNC", true,
+                "enableVideo", true
+        ));
+        Configuration.browserCapabilities = capabilities;
     }
 
     @BeforeEach
