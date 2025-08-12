@@ -15,7 +15,7 @@ public class DefaultSpecs {
     public static final RequestSpecification defaultRequestSpec = with()
             .filter(withCustomTemplates())
             .log().all()
-            .header("Authorization", "Bearer " + AccountApi.getAuthorization().getToken())
+            .header("Authorization", "Bearer " + AccountApi.successfulAuth().getToken())
             .contentType(JSON);
 
     public static ResponseSpecification defaultResponseSpec(int statusCode) {

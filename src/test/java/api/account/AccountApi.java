@@ -9,10 +9,8 @@ import static io.restassured.http.ContentType.JSON;
 
 public class AccountApi {
 
-    public static AuthResponseModel getAuthorization() {
-        AuthRequestModel authData = new AuthRequestModel();
-        authData.setUsername("dmitry_endo");
-        authData.setPassword("73^MkhSqH94Dq*tI");
+    public static AuthResponseModel successfulAuth() {
+        AuthRequestModel authData = new AuthRequestModel("dmitry_endo", "73^MkhSqH94Dq*tI");
 
         return given()
                 .log().all()

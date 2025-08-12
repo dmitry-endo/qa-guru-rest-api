@@ -23,7 +23,7 @@ public class WithLoginExtension implements BeforeEachCallback {
 
     @Step("Authorizing via API and setting up cookies")
     private void authorizeAndSetCookies() {
-        AuthResponseModel auth = AccountApi.getAuthorization();
+        AuthResponseModel auth = AccountApi.successfulAuth();
 
         open("/favicon.ico"); 
 

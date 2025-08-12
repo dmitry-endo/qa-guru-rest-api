@@ -22,7 +22,7 @@ public class ProfileTests extends TestBase {
     @WithLogin
     @DisplayName("Check successful book deletion from profile's booklist")
     void successfulProfileBookDeletionTest() {
-        AuthResponseModel authResponseModel = step("Authorizing via API", AccountApi::getAuthorization);
+        AuthResponseModel authResponseModel = step("Authorizing via API", AccountApi::successfulAuth);
 
         String userId = authResponseModel.getUserId();
 
