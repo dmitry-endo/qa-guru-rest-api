@@ -4,8 +4,7 @@ import org.aeonbits.owner.Config;
 
 @Config.LoadPolicy(Config.LoadType.MERGE)
 @Config.Sources({
-//        "system:properties",
-        "classpath:config/remote.properties"
+        "classpath:config/test.properties"
 //        "classpath:config/${env}.properties"
 })
 public interface WebConfig extends Config {
@@ -15,11 +14,9 @@ public interface WebConfig extends Config {
     String getBaseUrl();
 
     @Key("selenoidLogin")
-    @DefaultValue("user1")
     String getSelenoidLogin();
 
     @Key("selenoidPassword")
-    @DefaultValue("1234")
     String getSelenoidPassword();
 
     @Key("selenoidRemoteHost")

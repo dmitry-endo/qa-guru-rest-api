@@ -2,6 +2,7 @@ HELP.md
 build/
 !**/src/main/**
 !**/src/test/**
+test.properties
 
 ### IntelliJ IDEA ###
 .idea

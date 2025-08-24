@@ -5,6 +5,7 @@ import config.ConfigReader;
 import config.ProjectConfig;
 import config.api.ApiConfig;
 import config.web.WebConfig;
+import helpers.Attachments;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -30,10 +31,12 @@ public class TestBase {
 
     @AfterEach
     void shutDown() {
-//        Attachments.screenshotAs("Final test step screenshot");
-//        Attachments.pageSource();
-//        Attachments.browserConsoleLogs();
-//        Attachments.addVideo();
+        Attachments.screenshotAs("Final test step screenshot");
+        Attachments.pageSource();
+        Attachments.browserConsoleLogs();
+        if (webConfig.isRemote()) {
+            Attachments.addVideo();
+        }
         closeWebDriver();
     }
 }
