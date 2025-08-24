@@ -26,11 +26,6 @@ public class BooksApi extends DefaultSpecs {
     public void addBookToProfile(String userId, String isbn) {
         AccountBooksRequestModel bookData =
                 new AccountBooksRequestModel(userId, List.of(new IsbnDataModel(isbn)));
-//        bookData.setUserId(userId);
-
-//        AccountBooksRequestModel.IsbnDataModel isbnData = new AccountBooksRequestModel.IsbnDataModel(isbn);
-//        isbnData.setIsbn(isbn);
-//        bookData.setCollectionOfIsbns(List.of(isbnData));
 
         given(defaultRequestSpec)
                 .body(bookData)
