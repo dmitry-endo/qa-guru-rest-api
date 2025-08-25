@@ -1,7 +1,5 @@
 package config;
 
-import config.api.ApiConfig;
-import config.web.WebConfig;
 import lombok.Getter;
 import org.aeonbits.owner.ConfigFactory;
 

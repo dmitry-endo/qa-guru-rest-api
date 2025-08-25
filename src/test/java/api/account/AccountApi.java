@@ -3,9 +3,7 @@ package api.account;
 import api.models.AuthRequestModel;
 import api.models.AuthResponseModel;
 import config.ConfigReader;
-import config.ProjectConfig;
-import config.api.ApiConfig;
-import config.web.WebConfig;
+import config.ApiConfig;
 
 import static api.ApiEndpoints.LOGIN_PATH;
 import static io.restassured.RestAssured.given;
@@ -16,10 +14,8 @@ public class AccountApi {
     public static AuthResponseModel successfulAuth() {
 
         ApiConfig apiConfig = ConfigReader.getApiConfig();
-        WebConfig webConfig = ConfigReader.getWebConfig();
-        ProjectConfig projectConfig = new ProjectConfig(webConfig, apiConfig);
         AuthRequestModel authData = new AuthRequestModel(
-                projectConfig.getUsername(), projectConfig.getPassword());
+                apiConfig.getUsername(), apiConfig.getPassword());
 
         return given()
                 .log().all()

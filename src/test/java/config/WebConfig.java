@@ -1,4 +1,4 @@
-package config.web;
+package config;
 
 import org.aeonbits.owner.Config;
 
@@ -24,10 +24,10 @@ public interface WebConfig extends Config {
 
     @Key("browser")
     @DefaultValue("chrome")
-    Browser getBrowser();
+    String getBrowser();
 
     @Key("browserVersion")
-    @DefaultValue("138")
+    @DefaultValue("139")
     String getBrowserVersion();
 
     @Key("browserSize")

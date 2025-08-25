@@ -1,11 +1,7 @@
 package config;
 
 import com.codeborne.selenide.Configuration;
-import config.api.ApiConfig;
-import config.web.WebConfig;
 import io.restassured.RestAssured;
-import org.aeonbits.owner.Config;
-import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -21,18 +17,10 @@ public class ProjectConfig {
         this.apiConfig = apiConfig;
     }
 
-    public String getUsername() {
-        return apiConfig.getUsername();
-    }
-
-    public String getPassword() {
-        return apiConfig.getPassword();
-    }
-
     public void setProjectConfig() {
         RestAssured.baseURI = apiConfig.getBaseUri();
         Configuration.baseUrl = webConfig.getBaseUrl();
-        Configuration.browser = webConfig.getBrowser().toString();
+        Configuration.browser = webConfig.getBrowser();
         Configuration.browserVersion = webConfig.getBrowserVersion();
         Configuration.browserSize = webConfig.getBrowserSize();
         Configuration.pageLoadStrategy = "eager";

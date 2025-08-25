@@ -1,4 +1,4 @@
-package config.api;
+package config;
 
 import org.aeonbits.owner.Config;
 
